@@ -16,6 +16,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuPage } from '../pages/menu/menu';
 
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/database";
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCBOff3pTDmMfDAvlxH8voyxGXY9sW5E0M",
+  authDomain: "passport-app-54783.firebaseapp.com",
+  databaseURL: "https://passport-app-54783.firebaseio.com",
+  projectId: "passport-app-54783",
+  storageBucket: "passport-app-54783.appspot.com",
+  messagingSenderId: "293747294657"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +43,9 @@ import { MenuPage } from '../pages/menu/menu';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +64,8 @@ import { MenuPage } from '../pages/menu/menu';
     StatusBar,
     SplashScreen,
     Dialogs,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFireDatabase,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

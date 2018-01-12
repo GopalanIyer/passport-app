@@ -31,7 +31,7 @@
     <ion-label floating>
       Changed Name
     </ion-label>
-    <ion-input type="text" name="changed_name" [(ngModel)]="data.changed_name"></ion-input>
+    <ion-input type="text" name="changed_name" [(ngModel)]="data.changed_name" *ngIf="data.name_changed"></ion-input>
   </ion-item>
   <ion-item id="personal-input7">
     <ion-label stacked>

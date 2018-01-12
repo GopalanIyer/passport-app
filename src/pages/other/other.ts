@@ -8,6 +8,8 @@ import { PaymentPage } from '../payment/payment';
 import { FamilyPage } from '../family/family';
 import { WitnessesPage } from '../witnesses/witnesses';
 
+import { AngularFireDatabase } from "angularfire2/database";
+
 @Component({
   selector: 'page-other',
   templateUrl: 'other.html'
@@ -73,6 +75,7 @@ export class OtherPage {
       return;
     }
 
+    
     //FIREBASE PUSH
   }
 
