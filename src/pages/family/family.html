@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Family
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page7">
+  <form id="family-form3">
+    <ion-item id="family-input11">
+      <ion-label floating></ion-label>
+      <ion-input type="text" placeholder="Father&#039;s Name" name="father_name" [(ngModel)]="data.father_name"></ion-input>
+    </ion-item>
+    <ion-item id="family-input13">
+      <ion-label floating></ion-label>
+      <ion-input type="text" placeholder="Mother&#039;s Name" name="mother_name" [(ngModel)]="data.mother_name"></ion-input>
+    </ion-item>
+    <ion-item id="family-input14">
+      <ion-label floating>
+        Husband's/Wife's Name
+      </ion-label>
+      <ion-input type="text" placeholder="Husband&#039;s/Wife&#039;s Name" name="hus_wif_name" [(ngModel)]="data.hus_wif_name"></ion-input>
+    </ion-item>
+    <ion-item id="family-input21">
+      <ion-label stacked>
+        Date of Marriage
+      </ion-label>
+      <ion-input type="date" placeholder="" name="marriage_date" [(ngModel)]="data.marriage_date"></ion-input>
+    </ion-item>
+    <ion-item id="family-select1">
+      <ion-label>
+        Is either of your parent/spouse a government servant currently?
+      </ion-label>
+      <ion-select name="government" [(ngModel)]="data.government">
+        <ion-option>No</ion-option>
+        <ion-option>Yes</ion-option>
+      </ion-select>
+    </ion-item>
+    <button id="family-button10" ion-button color="positive" (click)="next()" block>
+      Next
+    </button>
+    <button id="family-button11" ion-button color="stable" (click)="previous()" outline block>
+      Previous
+    </button>
+  </form>
+</ion-content>

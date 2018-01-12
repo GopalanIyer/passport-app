@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Other
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <form id="other-form5">
+    <ion-item id="other-select2">
+      <ion-label>
+        Action
+      </ion-label>
+      <ion-select name="action" [(ngModel)]="data.action">
+        <ion-option>Refresh</ion-option>
+        <ion-option>Re-Issue</ion-option>
+        <ion-option>Minor</ion-option>
+        <ion-option>Lost Passport</ion-option>
+        <ion-option>Damaged Passport</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="other-select3">
+      <ion-label>
+        Type
+      </ion-label>
+      <ion-select name="type" [(ngModel)]="data.type">
+        <ion-option>Normal</ion-option>
+        <ion-option>Tatkaal</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="other-input25">
+      <ion-label floating>
+        Old Passport Number
+      </ion-label>
+      <ion-input type="text" name="old_passport" [(ngModel)]="data.old_passport"></ion-input>
+    </ion-item>
+    <ion-item id="other-input26">
+      <ion-label floating>
+        Police Station
+      </ion-label>
+      <ion-input type="text" name="police_station" [(ngModel)]="data.police_station"></ion-input>
+    </ion-item>
+    <ion-item id="other-input27">
+      <ion-label floating>
+        Place of Appointment
+      </ion-label>
+      <ion-input type="text" name="appointment_place" [(ngModel)]="data.appointment_place"></ion-input>
+    </ion-item>
+    <ion-item id="other-input36">
+      <ion-label floating>
+        Form Number
+      </ion-label>
+      <ion-input type="number" name="form_no" [(ngModel)]="data.form_no"></ion-input>
+    </ion-item>
+    <ion-item id="other-input37">
+      <ion-label floating>
+        Telecaller Name
+      </ion-label>
+      <ion-input type="text" name="telecaller_name" [(ngModel)]="data.telecaller_name"></ion-input>
+    </ion-item>
+    <ion-item id="other-input38">
+      <ion-label floating>
+        Name of Executive
+      </ion-label>
+      <ion-input type="text" name="executive_name" [(ngModel)]="data.executive_name"></ion-input>
+    </ion-item>
+    <button id="other-button14" ion-button color="positive" (click)="submit()" block>
+      Submit
+    </button>
+    <button id="other-button15" ion-button color="stable" (click)="previous()" outline block>
+      Previous
+    </button>
+  </form>
+</ion-content>

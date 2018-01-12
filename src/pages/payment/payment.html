@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Payment
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page8">
+  <form id="payment-form6">
+    <ion-item id="payment-input31">
+      <ion-label floating>
+        Amount (In Rs.)
+      </ion-label>
+      <ion-input type="number" name="amount" [(ngModel)]="data.amount"></ion-input>
+    </ion-item>
+    <ion-item id="payment-input32">
+      <ion-label floating>
+        Affidavit Amount (In Rs.)
+      </ion-label>
+      <ion-input type="number" name="amount_affidavit" [(ngModel)]="data.amount_affidavit"></ion-input>
+    </ion-item>
+    <ion-item id="payment-input33">
+      <ion-label floating>
+        Total Amount (In Rs.)
+      </ion-label>
+      <ion-input type="number" name="amount_total" [(ngModel)]="data.amount_total"></ion-input>
+    </ion-item>
+    <ion-item id="payment-input34">
+      <ion-label floating>
+        DD/Cheque Number
+      </ion-label>
+      <ion-input type="text" name="cheque_no" [(ngModel)]="data.cheque_no"></ion-input>
+    </ion-item>
+    <ion-item id="payment-input35">
+      <ion-label floating>
+        Bank Name
+      </ion-label>
+      <ion-input type="text" name="bank_name" [(ngModel)]="data.bank_name"></ion-input>
+    </ion-item>
+    <button id="payment-button16" ion-button color="positive" (click)="next()" block>
+      Next
+    </button>
+    <button id="payment-button17" ion-button color="stable" (click)="previous()" outline block>
+      Previous
+    </button>
+  </form>
+</ion-content>
