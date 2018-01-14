@@ -7,8 +7,8 @@ import { Dialogs } from "@ionic-native/dialogs";
 import { PaymentPage } from '../payment/payment';
 import { FamilyPage } from '../family/family';
 import { WitnessesPage } from '../witnesses/witnesses';
-
-import { AngularFireDatabase } from "angularfire2/database";
+import { ConfirmPage } from '../confirm/confirm';
+import { App } from 'ionic-angular/components/app/app';
 
 @Component({
   selector: 'page-other',
@@ -27,7 +27,7 @@ export class OtherPage {
     executive_name: '',
   }
 
-  constructor(public navCtrl: NavController, private dialogs: Dialogs) {
+  constructor(public navCtrl: NavController, private dialogs: Dialogs, public app: App) {
   }
 
   previous() {
@@ -75,8 +75,13 @@ export class OtherPage {
       return;
     }
 
+    this.app.getRootNav().push(ConfirmPage);
     
-    //FIREBASE PUSH
+  }
+
+
+  onChange() {
+    formData.other = this.data;
   }
 
   validate() {

@@ -13,13 +13,13 @@
     <ion-label floating>
       Name
     </ion-label>
-    <ion-input type="text" placeholder="" name="name" [(ngModel)]="data.name"></ion-input>
+    <ion-input (ionChange)='onChange()' type="text" placeholder="" name="name" [(ngModel)]="data.name"></ion-input>
   </ion-item>
   <ion-item id="personal-input5">
     <ion-label floating>
       Surname
     </ion-label>
-    <ion-input type="text" name="surname" [(ngModel)]="data.surname"></ion-input>
+    <ion-input (ionChange)='onChange()' type="text" name="surname" [(ngModel)]="data.surname"></ion-input>
   </ion-item>
   <ion-item id="personal-toggle3">
     <ion-label>
@@ -31,25 +31,25 @@
     <ion-label floating>
       Changed Name
     </ion-label>
-    <ion-input type="text" name="changed_name" [(ngModel)]="data.changed_name" *ngIf="data.name_changed"></ion-input>
+    <ion-input (ionChange)='onChange()' type="text" name="changed_name" [(ngModel)]="data.changed_name" *ngIf="data.name_changed"></ion-input>
   </ion-item>
   <ion-item id="personal-input7">
     <ion-label stacked>
       Date of Birth
     </ion-label>
-    <ion-input type="date" name="birth_date" [(ngModel)]="data.birth_date"></ion-input>
+    <ion-input (ionChange)='onChange()' type="date" name="birth_date" [(ngModel)]="data.birth_date"></ion-input>
   </ion-item>
   <ion-item id="personal-input8">
     <ion-label floating>
       Place of Birth
     </ion-label>
-    <ion-input type="text" name="birth_place" [(ngModel)]="data.birth_place"></ion-input>
+    <ion-input (ionChange)='onChange()' type="text" name="birth_place" [(ngModel)]="data.birth_place"></ion-input>
   </ion-item>
   <ion-item id="personal-input9">
     <ion-label floating>
       Qualification
     </ion-label>
-    <ion-input type="text" name="qualification" [(ngModel)]="data.qualification"></ion-input>
+    <ion-input (ionChange)='onChange()' type="text" name="qualification" [(ngModel)]="data.qualification"></ion-input>
   </ion-item>
   <ion-item id="personal-input12">
     <ion-label>
@@ -74,19 +74,19 @@
     <ion-label stacked>
       Residing Since (Month and Year)
     </ion-label>
-    <ion-input type="month" placeholder="Residing Since (Month and Year)" name="residing_since" [(ngModel)]="data.residing_since"></ion-input>
+    <ion-input (ionChange)='onChange()' type="month" placeholder="Residing Since (Month and Year)" name="residing_since" [(ngModel)]="data.residing_since"></ion-input>
   </ion-item>
   <ion-item id="personal-input28">
     <ion-label floating>
       Primary Contact Number
     </ion-label>
-    <ion-input type="tel" name="contact_no1" [(ngModel)]="data.contact_no1"></ion-input>
+    <ion-input (ionChange)='onChange()' type="tel" name="contact_no1" [(ngModel)]="data.contact_no1"></ion-input>
   </ion-item>
   <ion-item id="personal-input29">
     <ion-label floating>
       Secondary Contact Number
     </ion-label>
-    <ion-input type="tel" name="contact_no2" [(ngModel)]="data.contact_no2"></ion-input>
+    <ion-input (ionChange)='onChange()' type="tel" name="contact_no2" [(ngModel)]="data.contact_no2"></ion-input>
   </ion-item>
   <button id="personal-button9" ion-button color="positive" (click)="next()" block>
     Next

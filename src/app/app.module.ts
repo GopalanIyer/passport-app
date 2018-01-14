@@ -18,6 +18,7 @@ import { MenuPage } from '../pages/menu/menu';
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/database";
+import { ConfirmPage } from '../pages/confirm/confirm';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCBOff3pTDmMfDAvlxH8voyxGXY9sW5E0M",
@@ -39,7 +40,8 @@ export const firebaseConfig = {
     HomePage,
     FamilyPage,
     PaymentPage,
-    MenuPage
+    MenuPage,
+    ConfirmPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ export const firebaseConfig = {
     HomePage,
     FamilyPage,
     PaymentPage,
-    MenuPage
+    MenuPage,
+    ConfirmPage
   ],
   providers: [
     StatusBar,

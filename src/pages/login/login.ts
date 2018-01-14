@@ -12,6 +12,6 @@ export class LoginPage {
   }
   goToHome(params){
     if (!params) params = {};
-    this.navCtrl.push(MenuPage);
+    this.navCtrl.setRoot(MenuPage);
   }
 }

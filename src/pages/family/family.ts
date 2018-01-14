@@ -41,6 +41,10 @@ export class FamilyPage {
     t.select(0);
   }
 
+  onChange() {
+    formData.family = this.data;
+  }
+
   validate() {
     console.log("family: validate");
     var err = false;

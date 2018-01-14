@@ -39,6 +39,10 @@ export class WitnessesPage {
     t.select(1);
   }
 
+  onChange() {
+    formData.witnesses = this.data;
+  }
+
   validate() {
     console.log("witness: validate");
     var err = false;

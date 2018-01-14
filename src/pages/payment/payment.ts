@@ -40,6 +40,10 @@ export class PaymentPage {
     t.select(2);
   }
 
+  onChange() {
+    formData.payment = this.data;
+  }
+
   validate() {
     console.log("payment: validate");
     var err = false;

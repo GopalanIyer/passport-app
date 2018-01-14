@@ -41,6 +41,10 @@ export class PersonalPage {
     t.select(1);
   }
 
+  onChange() {
+    formData.personal = this.data;
+  }
+
   validate() {
     console.log("personal: validate");
     var err = false;

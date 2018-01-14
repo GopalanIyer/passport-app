@@ -17,25 +17,25 @@
       <ion-label floating>
         Witness 1 Name
       </ion-label>
-      <ion-input type="text" name="name_witness1" [(ngModel)]="data.name_witness1"></ion-input>
+      <ion-input (ionChange)='onChange()' type="text" name="name_witness1" [(ngModel)]="data.name_witness1"></ion-input>
     </ion-item>
     <ion-item id="witnesses-input17">
       <ion-label floating>
         Witness 1 Address
       </ion-label>
-      <ion-input type="text" name="address_witness1" [(ngModel)]="data.address_witness1"></ion-input>
+      <ion-input (ionChange)='onChange()' type="text" name="address_witness1" [(ngModel)]="data.address_witness1"></ion-input>
     </ion-item>
     <ion-item id="witnesses-input19">
       <ion-label floating>
         Witness 2 Name
       </ion-label>
-      <ion-input type="text" name="name_witness2" [(ngModel)]="data.name_witness2"></ion-input>
+      <ion-input (ionChange)='onChange()' type="text" name="name_witness2" [(ngModel)]="data.name_witness2"></ion-input>
     </ion-item>
     <ion-item id="witnesses-input20">
       <ion-label floating>
         Witness 2 Address
       </ion-label>
-      <ion-input type="text" name="address_witness2" [(ngModel)]="data.address_witness2"></ion-input>
+      <ion-input (ionChange)='onChange()' type="text" name="address_witness2" [(ngModel)]="data.address_witness2"></ion-input>
     </ion-item>
     <button id="witnesses-button12" ion-button color="positive" (click)="next()" block>
       Next

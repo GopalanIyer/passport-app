@@ -1,0 +1,142 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Confirm Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <strong>Personal:</strong>
+      <ion-list>
+        <ion-item text-wrap>
+          Name - {{data.personal.name}}
+        </ion-item>
+        <ion-item text-wrap>
+          Surname - {{data.personal.surname}}
+        </ion-item>
+        <ion-item text-wrap>
+          Name Changed? - {{data.personal.name_changed? 'Yes':'No'}}
+        </ion-item>
+        <ion-item *ngIf="data.personal.name_changed" text-wrap>
+          Changed Name - {{data.personal.changed_name}}
+        </ion-item>
+        <ion-item text-wrap>
+          Birth Date - {{data.personal.birth_date}}
+        </ion-item>
+        <ion-item text-wrap>
+          Birth Place - {{data.personal.birth_place}}
+        </ion-item>
+        <ion-item text-wrap>
+          Qualification - {{data.personal.qualification}}
+        </ion-item>
+        <ion-item text-wrap>
+          Profession - {{data.personal.profession}}
+        </ion-item>
+        <ion-item text-wrap>
+          Address - {{data.personal.address}}
+        </ion-item>
+        <ion-item text-wrap>
+          Residing Since - {{data.personal.residing_since}}
+        </ion-item>
+        <ion-item text-wrap>
+          Primary Contact Number - {{data.personal.contact_no1}}
+        </ion-item>
+        <ion-item text-wrap>
+          Secondary Contact Number - {{data.personal.contact_no2}}
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <strong>Family:</strong>
+      <ion-list>
+        <ion-item text-wrap>
+          Father's Name - {{data.family.father_name}}
+        </ion-item>
+        <ion-item text-wrap>
+          Mother's Name - {{data.family.mother_name}}
+        </ion-item>
+        <ion-item text-wrap>
+          Husband's/Wife's Name - {{data.family.hus_wif_name}}
+        </ion-item>
+        <ion-item text-wrap>
+          Date of Marriage - {{data.family.marriage_date}}
+        </ion-item>
+        <ion-item text-wrap>
+          Is either of your parent/spouse a government servant currently? - {{data.family.government}}
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <strong>Witnesses:</strong>
+      <ion-list>
+        <ion-item text-wrap>
+          Witness 1 Name - {{data.witnesses.name_witness1}}
+        </ion-item>
+        <ion-item text-wrap>
+          Witness 2 Name - {{data.witnesses.name_witness2}}
+        </ion-item>
+        <ion-item text-wrap>
+          Witness 1 Addresss - {{data.witnesses.address_witness1}}
+        </ion-item>
+        <ion-item text-wrap>
+          Witness 2 Address - {{data.witnesses.address_witness2}}
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <strong>Payment:</strong>
+      <ion-list>
+        <ion-item text-wrap>
+          Amount (in Rs.) - {{data.payment.amount}}
+        </ion-item>
+        <ion-item text-wrap>
+          Affidavit Amount (in Rs.) - {{data.payment.amount_affidavit}}
+        </ion-item>
+        <ion-item text-wrap>
+          Total Amount (in Rs.) - {{data.payment.amount_total}}
+        </ion-item>
+        <ion-item text-wrap>
+          DD/Cheque Number - {{data.payment.cheque_no}}
+        </ion-item>
+        <ion-item text-wrap>
+          Bank Name - {{data.payment.bank_name}}
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <strong>Other:</strong>
+      <ion-list>
+        <ion-item text-wrap>
+          Action - {{data.other.action}}
+        </ion-item>
+        <ion-item text-wrap>
+          Type - {{data.other.type}}
+        </ion-item>
+        <ion-item text-wrap>
+          Old Passport Number - {{data.other.old_passport}}
+        </ion-item>
+        <ion-item text-wrap>
+          Police Station - {{data.other.police_station}}
+        </ion-item>
+        <ion-item text-wrap>
+          Place of Appointment - {{data.other.appointment_place}}
+        </ion-item>
+        <ion-item text-wrap>
+          Form Number - {{data.other.form_no}}
+        </ion-item>
+        <ion-item text-wrap>
+          Telecaller Name - {{data.other.telecaller_name}}
+        </ion-item>
+        <ion-item text-wrap>
+          Name of Executive - {{data.other.executive_name}}
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <button ion-button block (click)="confirm()">
+      Confirm
+    </button>
+  </ion-list>
+</ion-content>
