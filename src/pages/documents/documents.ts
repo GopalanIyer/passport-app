@@ -108,7 +108,9 @@ export class DocumentsPage {
   }
 
   savePad() {
-    this.signature = this.signaturePad.toDataURL();
+    formData.documents.signature = this.signaturePad.toDataURL();
+    console.log(formData.documents.signature);
+    
     this.signaturePad.clear();
     let toast = this.toastCtrl.create({
       message: 'New Signature saved.',
@@ -118,8 +120,6 @@ export class DocumentsPage {
   }
 
   clearPad() {
-    formData.documents.signature = this.signaturePad.toDataURL();
-    console.log(formData.documents.signature);
     this.signaturePad.clear();
   }
 }
