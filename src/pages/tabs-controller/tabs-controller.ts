@@ -5,6 +5,7 @@ import { FamilyPage } from '../family/family';
 import { WitnessesPage } from '../witnesses/witnesses';
 import { PaymentPage } from '../payment/payment';
 import { OtherPage } from '../other/other';
+import { DocumentsPage } from '../documents/documents';
 
 @Component({
   selector: 'page-tabs-controller',
@@ -16,7 +17,8 @@ export class TabsControllerPage {
   tab2Root: any = FamilyPage;
   tab3Root: any = WitnessesPage;
   tab4Root: any = PaymentPage;
-  tab5Root: any = OtherPage;
+  tab5Root: any = DocumentsPage;
+  tab6Root: any = OtherPage;
   constructor(public navCtrl: NavController) {
   }
   

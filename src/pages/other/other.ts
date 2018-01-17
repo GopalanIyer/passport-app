@@ -39,41 +39,41 @@ export class OtherPage {
     formData.other = this.data;
     console.log(JSON.stringify(formData.other));
 
-    var presonalMsg = new PersonalPage(this.navCtrl, this.dialogs).validate();
-    var familyMsg = new FamilyPage(this.navCtrl, this.dialogs).validate();
-    var witnessesMsg = new WitnessesPage(this.navCtrl, this.dialogs).validate();
-    var paymentMsg = new PaymentPage(this.navCtrl, this.dialogs).validate();
-    var otherMsg = this.validate();
+    // var presonalMsg = new PersonalPage(this.navCtrl, this.dialogs).validate();
+    // var familyMsg = new FamilyPage(this.navCtrl, this.dialogs).validate();
+    // var witnessesMsg = new WitnessesPage(this.navCtrl, this.dialogs).validate();
+    // var paymentMsg = new PaymentPage(this.navCtrl, this.dialogs).validate();
+    // var otherMsg = this.validate();
     
-    var err = false;
-    var msg = '';
-    if(presonalMsg != true) {
-      err = true;
-      msg += '\nPERSONAL:' + presonalMsg;
-    }
-    if(familyMsg != true) {
-      err = true;
-      msg += '\nFAMILY:' + familyMsg;
-    }
-    if(witnessesMsg != true) {
-      err = true;
-      msg += '\nWITNESSES:' + witnessesMsg;
-    }
-    if(paymentMsg != true) {
-      err = true;
-      msg += '\nPAYMENT:' + paymentMsg;
-    }
-    if(otherMsg != true) {
-      err = true;
-      msg += '\nOTHER:' + otherMsg;
-    }
+    // var err = false;
+    // var msg = '';
+    // if(presonalMsg != true) {
+    //   err = true;
+    //   msg += '\nPERSONAL:' + presonalMsg;
+    // }
+    // if(familyMsg != true) {
+    //   err = true;
+    //   msg += '\nFAMILY:' + familyMsg;
+    // }
+    // if(witnessesMsg != true) {
+    //   err = true;
+    //   msg += '\nWITNESSES:' + witnessesMsg;
+    // }
+    // if(paymentMsg != true) {
+    //   err = true;
+    //   msg += '\nPAYMENT:' + paymentMsg;
+    // }
+    // if(otherMsg != true) {
+    //   err = true;
+    //   msg += '\nOTHER:' + otherMsg;
+    // }
 
-    if(err) {
-      this.dialogs.alert(msg, "Following fields cannot be empty: ")
-      .then(() => console.log("Dialog Dismissed"))
-      .catch(() => console.log("Error"))
-      return;
-    }
+    // if(err) {
+    //   this.dialogs.alert(msg, "Following fields cannot be empty: ")
+    //   .then(() => console.log("Dialog Dismissed"))
+    //   .catch(() => console.log("Error"))
+    //   return;
+    // }
 
     this.app.getRootNav().push(ConfirmPage);
     

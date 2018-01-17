@@ -21,7 +21,7 @@ export class ConfirmPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfirmPage');
-    console.log(JSON.stringify(this.data));
+    // console.log(JSON.stringify(this.data));
 
   }
 

@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Documents</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-label>
+      Aadhar Card:
+    </ion-label>
+    <button ion-button (click)="openCamera('aadhar')">Upload</button>
+  </ion-row>
+  <ion-row>
+    <ion-label>
+      PAN Card:
+    </ion-label>
+    <button ion-button (click)="openCamera('pan')">Upload</button>
+  </ion-row>
+  <ion-row>
+    <ion-label>
+      Bank Details:
+    </ion-label>
+    <button ion-button (click)="openGallery('bank_details')">Upload</button>
+  </ion-row>
+  <ion-row>
+    <ion-label>
+      Salary Slip:
+    </ion-label>
+    <button ion-button (click)="openFile('salary_slip')">Upload</button>
+  </ion-row>
+  <ion-row>
+    <ion-label>
+      Education Qualification Details:
+    </ion-label>
+    <button ion-button (click)="openFile('education')">Upload</button>
+  </ion-row>
+  <ion-label>Signature</ion-label>
+  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+  <ion-row>
+      <button ion-button (click)="clearPad()">Clear</button>
+      <button ion-button (click)="savePad()">Save</button>
+  </ion-row>
+</ion-content>

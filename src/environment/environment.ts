@@ -42,5 +42,13 @@ export var formData = {
         form_no: '',
         telecaller_name: '',
         executive_name: '',
+    },
+    documents: {
+        aadhar: '',
+        pan: '',
+        bank_details: '',
+        salary_slip: '',
+        education: '',
+        signature: ''
     }
 }
