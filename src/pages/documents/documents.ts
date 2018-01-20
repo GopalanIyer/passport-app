@@ -63,7 +63,7 @@ export class DocumentsPage {
 
     this.camera.getPicture(options).then((imageData) => {
       console.log(imageData);
-      this.uploadImage(imageData, 'base64');
+      this.uploadImage(imageData, 'base64', 'image/jpeg');
       formData.documents[type] = imageData;
     }, (err) => {
       console.log(err);
