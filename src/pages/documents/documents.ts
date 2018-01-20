@@ -6,6 +6,8 @@ import { FileChooser } from "@ionic-native/file-chooser";
 import { Base64 } from '@ionic-native/base64';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { FilePath } from "@ionic-native/file-path";
+import { AngularFireStorage } from "angularfire2/storage";
 
 @IonicPage()
 @Component({
@@ -20,7 +22,9 @@ export class DocumentsPage {
     private camera: Camera,
     private fileChooser: FileChooser,
     private base64: Base64,
-    private toastCtrl: ToastController) {
+    private filePath: FilePath,
+    private toastCtrl: ToastController,
+    private afStorage: AngularFireStorage) {
   }
 
   ionViewDidLoad() {
@@ -33,14 +37,13 @@ export class DocumentsPage {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
+      encodingType: this.camera.EncodingType.PNG,
       mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true
+      allowEdit: false
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      console.log("SUCCESS");
-
+      this.uploadImage(imageData, 'base64', 'image/jpeg');
       formData.documents[type] = imageData;
     }, (err) => {
       console.log(err);
@@ -52,15 +55,15 @@ export class DocumentsPage {
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
-      mediaType: this.camera.MediaType.ALLMEDIA,
+      mediaType: this.camera.MediaType.PICTURE,
       saveToPhotoAlbum: true
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      console.log("SUCCESS");
-
+      console.log(imageData);
+      this.uploadImage(imageData, 'base64');
       formData.documents[type] = imageData;
     }, (err) => {
       console.log(err);
@@ -70,16 +73,41 @@ export class DocumentsPage {
   openFile(type: string) {
     console.log("openFile");
 
+    let content = '';
+    switch(type) {
+      case 'salary_slip':
+        content = 'application/pdf';
+        break;
+      case 'education':
+        content = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        break;
+    }
     this.fileChooser.open()
       .then(uri => {
-        this.base64.encodeFile(uri).then((base64File: string) => {
-          formData.documents[type] = base64File;
-        }, (err) => {
-          console.log(err);
-        });
+        this.filePath.resolveNativePath(uri)
+          .then((res) => {
+            this.base64.encodeFile(res).then((base64File: string) => {
+              this.uploadImage(base64File, 'data_url', content);
+              formData.documents[type] = res;
+            }, (err) => {
+              console.log(err);
+            });
+          })
       })
       .catch(err => {
         console.log(err);
+      })
+  }
+
+  uploadImage(image, type, meta) {
+    console.log(image.substring(0, 29));
+    console.log("Upload Image");
+    this.afStorage.ref("test.jpg").putString(image, type, { contentType: meta }) //application/pdf
+      .catch(err => {
+        console.log("Upload Failed: ", err);
+      })
+      .then(res => {
+        console.log("Upload Successful");
       })
   }
 
@@ -110,7 +138,7 @@ export class DocumentsPage {
   savePad() {
     formData.documents.signature = this.signaturePad.toDataURL();
     console.log(formData.documents.signature);
-    
+
     this.signaturePad.clear();
     let toast = this.toastCtrl.create({
       message: 'New Signature saved.',
@@ -122,4 +150,5 @@ export class DocumentsPage {
   clearPad() {
     this.signaturePad.clear();
   }
+
 }

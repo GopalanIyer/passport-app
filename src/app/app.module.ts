@@ -24,6 +24,8 @@ import { Camera } from '@ionic-native/camera';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Base64 } from "@ionic-native/base64";
 import { SignaturePadModule } from "angular2-signaturepad";
+import { FilePath } from '@ionic-native/file-path';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCBOff3pTDmMfDAvlxH8voyxGXY9sW5E0M",
@@ -54,6 +56,7 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     SignaturePadModule
   ],
   bootstrap: [IonicApp],
@@ -79,6 +82,7 @@ export const firebaseConfig = {
     Camera,
     FileChooser,
     Base64,
+    FilePath,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
