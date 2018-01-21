@@ -15,17 +15,17 @@
         <ion-label floating>
           Email
         </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+        <ion-input type="email" name="email" [(ngModel)]="email"></ion-input>
       </ion-item>
       <ion-item id="login-input2">
         <ion-label floating>
           Password
         </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
+        <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-    <button id="login-button1" ion-button color="stable" block on-click="goToHome()">
+    <button id="login-button1" ion-button color="stable" block on-click="login()">
       Log in
     </button>
     <div id="login-container1">
