@@ -1,13 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from "@ionic-native/camera";
-import { formData } from "../../environment/environment";
+import { formData, documents } from "../../environment/environment";
 import { FileChooser } from "@ionic-native/file-chooser";
 import { Base64 } from '@ionic-native/base64';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { FilePath } from "@ionic-native/file-path";
-import { AngularFireStorage } from "angularfire2/storage";
+import { AngularFireStorage, AngularFireUploadTask } from "angularfire2/storage";
+import { Tabs } from 'ionic-angular/components/tabs/tabs';
+import { SelectSignPage } from '../select-sign/select-sign';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 
 @IonicPage()
 @Component({
@@ -15,6 +18,13 @@ import { AngularFireStorage } from "angularfire2/storage";
   templateUrl: 'documents.html',
 })
 export class DocumentsPage {
+
+  aadhar_selected = false;
+  pan_selected = false;
+  bank_details_selected = false;
+  salary_slip_selected = false;
+  education_selected = false;
+  signature_selected = false;
 
   constructor(
     public navCtrl: NavController,
@@ -24,6 +34,7 @@ export class DocumentsPage {
     private base64: Base64,
     private filePath: FilePath,
     private toastCtrl: ToastController,
+    private modalCtrl: ModalController,
     private afStorage: AngularFireStorage) {
   }
 
@@ -43,8 +54,16 @@ export class DocumentsPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.uploadImage(imageData, 'base64', 'image/jpeg');
-      formData.documents[type] = imageData;
+      // this.uploadImage(imageData, 'base64', 'image/jpeg');
+      documents[type] = imageData;
+      switch (type) {
+        case 'aadhar':
+          this.aadhar_selected = true;
+          break;
+        case 'pan':
+          this.pan_selected = true;
+          break;
+      }
     }, (err) => {
       console.log(err);
     });
@@ -62,9 +81,9 @@ export class DocumentsPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      console.log(imageData);
-      this.uploadImage(imageData, 'base64', 'image/jpeg');
-      formData.documents[type] = imageData;
+      // this.uploadImage(imageData, 'base64', 'image/jpeg');
+      documents[type] = imageData;
+      this.bank_details_selected = true;
     }, (err) => {
       console.log(err);
     });
@@ -74,7 +93,7 @@ export class DocumentsPage {
     console.log("openFile");
 
     let content = '';
-    switch(type) {
+    switch (type) {
       case 'salary_slip':
         content = 'application/pdf';
         break;
@@ -82,13 +101,22 @@ export class DocumentsPage {
         content = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
         break;
     }
+
     this.fileChooser.open()
       .then(uri => {
         this.filePath.resolveNativePath(uri)
           .then((res) => {
             this.base64.encodeFile(res).then((base64File: string) => {
-              this.uploadImage(base64File, 'data_url', content);
-              formData.documents[type] = res;
+              // this.uploadImage(base64File, 'data_url', content);
+              documents[type] = res;
+              switch (type) {
+                case 'salary_slip':
+                  this.salary_slip_selected = true;
+                  break;
+                case 'education':
+                  this.education_selected = true;
+                  break;
+              }
             }, (err) => {
               console.log(err);
             });
@@ -99,56 +127,54 @@ export class DocumentsPage {
       })
   }
 
-  uploadImage(image, type, meta) {
-    console.log(image.substring(0, 29));
-    console.log("Upload Image");
-    this.afStorage.ref("test.jpg").putString(image, type, { contentType: meta }) //application/pdf
-      .catch(err => {
-        console.log("Upload Failed: ", err);
-      })
-      .then(res => {
-        console.log("Upload Successful");
-      })
+  openSignature() {
+    let modal = this.modalCtrl.create(SelectSignPage, {}, { showBackdrop: true, enableBackdropDismiss: true });
+    modal.present();
+
+    modal.onDidDismiss(data => {
+      console.log("Modal onDismiss");
+      documents.signature = data;
+      this.signature_selected = true;
+    })
   }
 
-  signature = '';
-  isDrawing = false;
-
-  @ViewChild(SignaturePad) signaturePad: SignaturePad;
-  private signaturePadOptions: Object = { // Check out https://github.com/szimek/signature_pad
-    'minWidth': 2,
-    'canvasWidth': 400,
-    'canvasHeight': 200,
-    'backgroundColor': '#f6fbff',
-    'penColor': '#666a73'
-  };
-
-  ionViewDidEnter() {
-    this.signaturePad.clear()
+  next() {
+    var t: Tabs = this.navCtrl.parent;
+    t.select(5);
   }
 
-  drawComplete() {
-    this.isDrawing = false;
+  previous() {
+    var t: Tabs = this.navCtrl.parent;
+    t.select(3);
   }
 
-  drawStart() {
-    this.isDrawing = true;
+  validate() {
+    console.log("documents: validate");
+    var err = false;
+    var msg = '';
+    if (documents.aadhar == '') {
+      msg += '\n\t Aadhar Card'
+      err = true;
+    }
+    if (documents.pan == '') {
+      msg += '\n\t Pan Card'
+      err = true;
+    }
+    if (documents.bank_details == '') {
+      msg += '\n\t Bank Details'
+      err = true;
+    }
+    if (documents.salary_slip == '') {
+      msg += '\n\t Salary Slip'
+      err = true;
+    }
+    if (documents.education == '') {
+      msg += '\n\t Education Qualification Details'
+      err = true;
+    }
+    if (documents.signature == '') {
+      msg += '\n\t Signature'
+      err = true;
+    }
   }
-
-  savePad() {
-    formData.documents.signature = this.signaturePad.toDataURL();
-    console.log(formData.documents.signature);
-
-    this.signaturePad.clear();
-    let toast = this.toastCtrl.create({
-      message: 'New Signature saved.',
-      duration: 3000
-    });
-    toast.present();
-  }
-
-  clearPad() {
-    this.signaturePad.clear();
-  }
-
 }

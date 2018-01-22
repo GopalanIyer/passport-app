@@ -39,6 +39,8 @@ export class OtherPage {
     formData.other = this.data;
     console.log(JSON.stringify(formData.other));
 
+    //TODO: Add validation for documents
+
     // var presonalMsg = new PersonalPage(this.navCtrl, this.dialogs).validate();
     // var familyMsg = new FamilyPage(this.navCtrl, this.dialogs).validate();
     // var witnessesMsg = new WitnessesPage(this.navCtrl, this.dialogs).validate();

@@ -26,6 +26,10 @@ import { Base64 } from "@ionic-native/base64";
 import { SignaturePadModule } from "angular2-signaturepad";
 import { FilePath } from '@ionic-native/file-path';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { SelectSignPage } from '../pages/select-sign/select-sign';
+import { LoadingPage } from '../pages/loading/loading';
+import { ProgressBarModule } from "angular-progress-bar"
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCBOff3pTDmMfDAvlxH8voyxGXY9sW5E0M",
@@ -49,7 +53,9 @@ export const firebaseConfig = {
     PaymentPage,
     MenuPage,
     ConfirmPage,
-    DocumentsPage
+    DocumentsPage,
+    SelectSignPage,
+    LoadingPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    SignaturePadModule
+    SignaturePadModule,
+    ProgressBarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,12 +74,14 @@ export const firebaseConfig = {
     OtherPage,
     TabsControllerPage,
     LoginPage,
+    SelectSignPage,
     HomePage,
     FamilyPage,
     PaymentPage,
     MenuPage,
     ConfirmPage,
-    DocumentsPage
+    DocumentsPage,
+    LoadingPage
   ],
   providers: [
     StatusBar,
@@ -83,6 +92,7 @@ export const firebaseConfig = {
     FileChooser,
     Base64,
     FilePath,
+    AngularFireAuth,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
