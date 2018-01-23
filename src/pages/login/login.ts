@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { MenuPage } from '../menu/menu';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({

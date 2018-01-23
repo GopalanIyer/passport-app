@@ -85,6 +85,7 @@
     <allow-navigation href="http://192.168.0.4:8100" />
     <allow-navigation href="http://192.168.1.100:8101" />
     <allow-navigation href="http://192.168.0.4:8101" />
+    <allow-navigation href="http://192.168.0.2:8100" />
     <engine name="android" spec="^6.3.0" />
     <plugin name="com-badrit-base64" spec="^0.2.0" />
     <plugin name="cordova-android-support-gradle-release" spec="^1.1.5">

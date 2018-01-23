@@ -30,6 +30,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { SelectSignPage } from '../pages/select-sign/select-sign';
 import { LoadingPage } from '../pages/loading/loading';
 import { ProgressBarModule } from "angular-progress-bar"
+import { PaytmGatewayPage } from '../pages/paytm-gateway/paytm-gateway';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCBOff3pTDmMfDAvlxH8voyxGXY9sW5E0M",
@@ -55,11 +57,13 @@ export const firebaseConfig = {
     ConfirmPage,
     DocumentsPage,
     SelectSignPage,
-    LoadingPage
+    LoadingPage,
+    PaytmGatewayPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SweetAlert2Module.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
@@ -81,7 +85,8 @@ export const firebaseConfig = {
     MenuPage,
     ConfirmPage,
     DocumentsPage,
-    LoadingPage
+    LoadingPage,
+    PaytmGatewayPage
   ],
   providers: [
     StatusBar,

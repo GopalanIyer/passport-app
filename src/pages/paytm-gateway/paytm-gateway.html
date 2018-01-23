@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Payment</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Enter Amount</ion-label>
+    <ion-input [(ngModel)]="amount" name="amount" type="number"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="pay()">Pay</button>
+</ion-content>

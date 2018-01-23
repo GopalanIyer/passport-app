@@ -11,6 +11,7 @@ import { AngularFireStorage, AngularFireUploadTask } from "angularfire2/storage"
 import { Tabs } from 'ionic-angular/components/tabs/tabs';
 import { SelectSignPage } from '../select-sign/select-sign';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
+import { Dialogs } from '@ionic-native/dialogs';
 
 @IonicPage()
 @Component({
@@ -35,7 +36,8 @@ export class DocumentsPage {
     private filePath: FilePath,
     private toastCtrl: ToastController,
     private modalCtrl: ModalController,
-    private afStorage: AngularFireStorage) {
+    private afStorage: AngularFireStorage,
+    private dialogs: Dialogs,) {
   }
 
   ionViewDidLoad() {
@@ -108,7 +110,7 @@ export class DocumentsPage {
           .then((res) => {
             this.base64.encodeFile(res).then((base64File: string) => {
               // this.uploadImage(base64File, 'data_url', content);
-              documents[type] = res;
+              documents[type] = base64File;
               switch (type) {
                 case 'salary_slip':
                   this.salary_slip_selected = true;
@@ -139,6 +141,12 @@ export class DocumentsPage {
   }
 
   next() {
+    var res = this.validate();
+    if(res != true) {
+      this.dialogs.alert(res, "Please select following fields: ");
+      return;
+    }
+
     var t: Tabs = this.navCtrl.parent;
     t.select(5);
   }
@@ -176,5 +184,11 @@ export class DocumentsPage {
       msg += '\n\t Signature'
       err = true;
     }
+
+    if (err) {
+      return msg;
+    }
+
+    return true;
   }
 }

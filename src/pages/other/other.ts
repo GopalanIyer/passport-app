@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Tabs } from 'ionic-angular/components/tabs/tabs';
-import { formData } from '../../environment/environment';
+import { formData, documents } from '../../environment/environment';
 import { PersonalPage } from '../personal/personal';
 import { Dialogs } from "@ionic-native/dialogs";
 import { PaymentPage } from '../payment/payment';
@@ -9,6 +9,7 @@ import { FamilyPage } from '../family/family';
 import { WitnessesPage } from '../witnesses/witnesses';
 import { ConfirmPage } from '../confirm/confirm';
 import { App } from 'ionic-angular/components/app/app';
+import { DocumentsPage } from '../documents/documents';
 
 @Component({
   selector: 'page-other',
@@ -39,12 +40,11 @@ export class OtherPage {
     formData.other = this.data;
     console.log(JSON.stringify(formData.other));
 
-    //TODO: Add validation for documents
-
     // var presonalMsg = new PersonalPage(this.navCtrl, this.dialogs).validate();
     // var familyMsg = new FamilyPage(this.navCtrl, this.dialogs).validate();
     // var witnessesMsg = new WitnessesPage(this.navCtrl, this.dialogs).validate();
     // var paymentMsg = new PaymentPage(this.navCtrl, this.dialogs).validate();
+    // var documentsMsg = this.validateDocuments();
     // var otherMsg = this.validate();
     
     // var err = false;
@@ -65,6 +65,10 @@ export class OtherPage {
     //   err = true;
     //   msg += '\nPAYMENT:' + paymentMsg;
     // }
+    // if(documentsMsg != true) {
+    //   err = true;
+    //   msg += '\nDOCUMENTS:' + documentsMsg;
+    // }
     // if(otherMsg != true) {
     //   err = true;
     //   msg += '\nOTHER:' + otherMsg;
@@ -81,9 +85,44 @@ export class OtherPage {
     
   }
 
-
   onChange() {
     formData.other = this.data;
+  }
+
+  validateDocuments() {
+    console.log("documents: validate");
+    var err = false;
+    var msg = '';
+    if (documents.aadhar == '') {
+      msg += '\n\t Aadhar Card'
+      err = true;
+    }
+    if (documents.pan == '') {
+      msg += '\n\t Pan Card'
+      err = true;
+    }
+    if (documents.bank_details == '') {
+      msg += '\n\t Bank Details'
+      err = true;
+    }
+    if (documents.salary_slip == '') {
+      msg += '\n\t Salary Slip'
+      err = true;
+    }
+    if (documents.education == '') {
+      msg += '\n\t Education Qualification Details'
+      err = true;
+    }
+    if (documents.signature == '') {
+      msg += '\n\t Signature'
+      err = true;
+    }
+
+    if (err) {
+      return msg;
+    }
+
+    return true;
   }
 
   validate() {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { formData } from '../../environment/environment';
 import { App } from 'ionic-angular/components/app/app';
@@ -6,6 +6,7 @@ import { MenuPage } from '../menu/menu';
 import { AngularFireDatabase } from "angularfire2/database";
 import { LoadingPage } from '../loading/loading';
 import { HomePage } from '../home/home';
+import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
 @IonicPage()
 @Component({
@@ -32,6 +33,7 @@ export class ConfirmPage {
 
   }
 
+  @ViewChild('customSwal') private customSwal: SwalComponent;
   confirm() {
     // this.afDB.list('/applications').push(formData)
     // .then(() => {
@@ -44,8 +46,14 @@ export class ConfirmPage {
     modal.present();
     modal.onDidDismiss(data => {
       if(data) {
-        this.navCtrl.setRoot(HomePage);
+        this.customSwal.show();
       }
     });
   }
+
+  dismiss() {
+    this.navCtrl.setRoot(MenuPage);
+  }
+
+  //TODO: add link to documents in formData
 }
