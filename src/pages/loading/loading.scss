@@ -1,0 +1,17 @@
+page-loading {
+    .modal {
+        display: flex;
+        padding: 30px;
+        background: rgba(0,0,0,0.5);
+    }
+    .loading {
+        border-radius: 10px;
+        position: absolute;
+        background: white;
+        padding: 15px;
+        top: 40%;
+        right: 5%;
+        left: 5%;
+    }
+    
+}

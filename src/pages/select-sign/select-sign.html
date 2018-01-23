@@ -1,0 +1,13 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Signature</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+    <button ion-button (click)="clearPad()">Clear</button>
+    <button ion-button (click)="savePad()">Save</button>
+</ion-content>
