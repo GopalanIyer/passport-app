@@ -54,7 +54,6 @@ function verifychecksum(params, key) {
   if (!params) console.log("params are null");
 
   var data = paramsToString(params, false);
-  //TODO: after PG fix on thier side remove below two lines
   if (params.CHECKSUMHASH) {
     params.CHECKSUMHASH = params.CHECKSUMHASH.replace('\n', '');
     params.CHECKSUMHASH = params.CHECKSUMHASH.replace('\r', '');

@@ -15,10 +15,8 @@ export class SelectSignPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private toastCtrl: ToastController,
-    // private renderer: Renderer,
     private viewCtrl: ViewController
   ) {
-    // this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'custom-popup', true);
   }
 
   ionViewDidLoad() {
@@ -51,9 +49,6 @@ export class SelectSignPage {
 
   savePad() {
     this.signature = this.signaturePad.toDataURL();
-    // console.log(formData.documents.signature);
-
-    // this.signaturePad.clear();
     let toast = this.toastCtrl.create({
       message: 'New Signature saved.',
       duration: 2000

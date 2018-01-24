@@ -45,11 +45,47 @@ export var formData = {
     },
 }
 
-export var documents = {
-    aadhar: '',
-    pan: '',
-    bank_details: '',
-    salary_slip: '',
-    education: '',
-    signature: ''
-}
+export var documents = [
+    {
+        name: 'Aadhar Card',
+        uploadName: 'aadhar.jpg',
+        data: '',
+        format: 'base64',
+        contentType: 'image/jpeg',
+    },
+    {
+        name: 'Pan Card',
+        uploadName: 'pan.jpg',
+        data: '',
+        format: 'base64',
+        contentType: 'image/jpeg',
+    },
+    {
+        name: 'Bank Details',
+        uploadName: 'bank_details.jpg',
+        data: '',
+        format: 'base64',
+        contentType: 'image/jpeg',
+    },
+    {
+        name: 'Salary Slip',
+        uploadName: 'salary_slip.pdf',
+        data: '',
+        format: 'data_url',
+        contentType: 'application/pdf',
+    },
+    {
+        name: 'Education Details',
+        uploadName: 'education.xls',
+        data: '',
+        format: 'data_url',
+        contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    },
+    {
+        name: 'Signature',
+        uploadName: 'signature.jpg',
+        data: '',
+        format: 'data_url',
+        contentType: 'image/jpeg',
+    },
+]

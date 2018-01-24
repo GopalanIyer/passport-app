@@ -46,7 +46,7 @@ export class OtherPage {
     // var paymentMsg = new PaymentPage(this.navCtrl, this.dialogs).validate();
     // var documentsMsg = this.validateDocuments();
     // var otherMsg = this.validate();
-    
+
     // var err = false;
     // var msg = '';
     // if(presonalMsg != true) {
@@ -82,7 +82,7 @@ export class OtherPage {
     // }
 
     this.app.getRootNav().push(ConfirmPage);
-    
+
   }
 
   onChange() {
@@ -93,30 +93,12 @@ export class OtherPage {
     console.log("documents: validate");
     var err = false;
     var msg = '';
-    if (documents.aadhar == '') {
-      msg += '\n\t Aadhar Card'
-      err = true;
-    }
-    if (documents.pan == '') {
-      msg += '\n\t Pan Card'
-      err = true;
-    }
-    if (documents.bank_details == '') {
-      msg += '\n\t Bank Details'
-      err = true;
-    }
-    if (documents.salary_slip == '') {
-      msg += '\n\t Salary Slip'
-      err = true;
-    }
-    if (documents.education == '') {
-      msg += '\n\t Education Qualification Details'
-      err = true;
-    }
-    if (documents.signature == '') {
-      msg += '\n\t Signature'
-      err = true;
-    }
+    documents.forEach(element => {
+      if (element.data == '') {
+        msg += "\n\t " + element.name;
+        err = true;
+      }
+    })
 
     if (err) {
       return msg;

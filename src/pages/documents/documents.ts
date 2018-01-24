@@ -37,7 +37,7 @@ export class DocumentsPage {
     private toastCtrl: ToastController,
     private modalCtrl: ModalController,
     private afStorage: AngularFireStorage,
-    private dialogs: Dialogs,) {
+    private dialogs: Dialogs, ) {
   }
 
   ionViewDidLoad() {
@@ -56,13 +56,12 @@ export class DocumentsPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // this.uploadImage(imageData, 'base64', 'image/jpeg');
-      documents[type] = imageData;
+      this.setData(type, imageData);
       switch (type) {
-        case 'aadhar':
+        case 'Aadhar Card':
           this.aadhar_selected = true;
           break;
-        case 'pan':
+        case 'Pan Card':
           this.pan_selected = true;
           break;
       }
@@ -83,8 +82,7 @@ export class DocumentsPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // this.uploadImage(imageData, 'base64', 'image/jpeg');
-      documents[type] = imageData;
+      this.setData(type, imageData);
       this.bank_details_selected = true;
     }, (err) => {
       console.log(err);
@@ -96,10 +94,10 @@ export class DocumentsPage {
 
     let content = '';
     switch (type) {
-      case 'salary_slip':
+      case 'Salary Slip':
         content = 'application/pdf';
         break;
-      case 'education':
+      case 'Education Details':
         content = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
         break;
     }
@@ -109,13 +107,12 @@ export class DocumentsPage {
         this.filePath.resolveNativePath(uri)
           .then((res) => {
             this.base64.encodeFile(res).then((base64File: string) => {
-              // this.uploadImage(base64File, 'data_url', content);
-              documents[type] = base64File;
+              this.setData(type, base64File);
               switch (type) {
-                case 'salary_slip':
+                case 'Salary Slip':
                   this.salary_slip_selected = true;
                   break;
-                case 'education':
+                case 'Education Details':
                   this.education_selected = true;
                   break;
               }
@@ -135,14 +132,14 @@ export class DocumentsPage {
 
     modal.onDidDismiss(data => {
       console.log("Modal onDismiss");
-      documents.signature = data;
+      documents[5] = data;
       this.signature_selected = true;
     })
   }
 
   next() {
     var res = this.validate();
-    if(res != true) {
+    if (res != true) {
       this.dialogs.alert(res, "Please select following fields: ");
       return;
     }
@@ -160,35 +157,25 @@ export class DocumentsPage {
     console.log("documents: validate");
     var err = false;
     var msg = '';
-    if (documents.aadhar == '') {
-      msg += '\n\t Aadhar Card'
-      err = true;
-    }
-    if (documents.pan == '') {
-      msg += '\n\t Pan Card'
-      err = true;
-    }
-    if (documents.bank_details == '') {
-      msg += '\n\t Bank Details'
-      err = true;
-    }
-    if (documents.salary_slip == '') {
-      msg += '\n\t Salary Slip'
-      err = true;
-    }
-    if (documents.education == '') {
-      msg += '\n\t Education Qualification Details'
-      err = true;
-    }
-    if (documents.signature == '') {
-      msg += '\n\t Signature'
-      err = true;
-    }
-
+    documents.forEach(element => {
+      if (element.data == '') {
+        msg += "\n\t " + element.name;
+        err = true;
+      }
+    })
     if (err) {
       return msg;
     }
 
     return true;
+  }
+
+  setData(type, data) {
+    documents.forEach(element => {
+      if (element.name == type) {
+        element.data = data;
+        return;
+      }
+    })
   }
 }
