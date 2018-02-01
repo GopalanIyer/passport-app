@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { MenuPage } from '../menu/menu';
 
 @Component({
   selector: 'page-login',
@@ -45,5 +46,10 @@ export class LoginPage {
         console.log(JSON.stringify(err));
         toast.present();
       })
+      
+  }
+
+  click() {
+    this.navCtrl.push(MenuPage);
   }
 }
