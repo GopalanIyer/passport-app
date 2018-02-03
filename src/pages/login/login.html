@@ -2,21 +2,21 @@
   <ion-grid fixed>
     <ion-row></ion-row>
     <ion-row justify-content-center center>
-      <ion-col col-xs-12 col-sm-8>
+      <ion-col col-xs-12 col-sm-12 col-md-6>
         <div class="box" padding>
           <ion-list no-lines>
             <ion-item text-center>LOGO</ion-item>
             <ion-item>
-              <ion-label stacked>Email</ion-label>
-              <ion-input type="email"></ion-input>
+              <ion-label floating>Email</ion-label>
+              <ion-input type="email" [(ngModel)]="email"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label stacked>Password</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="password"></ion-input>
             </ion-item>
             <ion-item>
-              <button ion-button text-center class="login" (click)="click()">Login</button>
-              <button ion-button clear float-right>Forgot Password</button>
+              <button ion-button default class="login" (click)="login()">Login</button>
+              <button ion-button clear float-right>Forgot Password?</button>
             </ion-item>
           </ion-list>
         </div>

@@ -15,13 +15,17 @@ export class HomePage {
     private afAuth: AngularFireAuth) {
   }
 
-  goToNewApp(params) {
+  newApplication(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(TabsControllerPage);
   }
 
-  goToPayment() {
+  payment() {
     this.navCtrl.push(PaytmGatewayPage);  
+  }
+
+  editForm() {
+    
   }
 
   logout() {

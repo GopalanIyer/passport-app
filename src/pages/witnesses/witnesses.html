@@ -9,39 +9,42 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page3">
-  <form id="witnesses-form4">
-    <h4 id="witnesses-heading1" style="color:#000000;">
-      Two witness names and their Address (only Neighbours)
-    </h4>
-    <ion-item id="witnesses-input16">
-      <ion-label floating>
-        Witness 1 Name
-      </ion-label>
-      <ion-input (ionChange)='onChange()' type="text" name="name_witness1" [(ngModel)]="data.name_witness1"></ion-input>
-    </ion-item>
-    <ion-item id="witnesses-input17">
-      <ion-label floating>
-        Witness 1 Address
-      </ion-label>
-      <ion-input (ionChange)='onChange()' type="text" name="address_witness1" [(ngModel)]="data.address_witness1"></ion-input>
-    </ion-item>
-    <ion-item id="witnesses-input19">
-      <ion-label floating>
-        Witness 2 Name
-      </ion-label>
-      <ion-input (ionChange)='onChange()' type="text" name="name_witness2" [(ngModel)]="data.name_witness2"></ion-input>
-    </ion-item>
-    <ion-item id="witnesses-input20">
-      <ion-label floating>
-        Witness 2 Address
-      </ion-label>
-      <ion-input (ionChange)='onChange()' type="text" name="address_witness2" [(ngModel)]="data.address_witness2"></ion-input>
-    </ion-item>
-    <button id="witnesses-button12" ion-button color="positive" (click)="next()" block>
+  <ion-item>
+    Two witness names and their Address (only Neighbours)
+  </ion-item>
+  <ion-item>
+    <ion-label floating>
+      Witness 1 Name
+    </ion-label>
+    <ion-input (ionChange)='onChange()' type="text" name="name_witness1" [(ngModel)]="data.name_witness1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>
+      Witness 1 Address
+    </ion-label>
+    <ion-input (ionChange)='onChange()' type="text" name="address_witness1" [(ngModel)]="data.address_witness1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>
+      Witness 2 Name
+    </ion-label>
+    <ion-input (ionChange)='onChange()' type="text" name="name_witness2" [(ngModel)]="data.name_witness2"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>
+      Witness 2 Address
+    </ion-label>
+    <ion-input (ionChange)='onChange()' type="text" name="address_witness2" [(ngModel)]="data.address_witness2"></ion-input>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-item no-lines>
+    <button ion-button color="positive" (click)="next()" default float-right>
       Next
     </button>
-    <button id="witnesses-button13" ion-button color="stable" (click)="previous()" outline block>
+    <button ion-button color="stable" (click)="previous()" outline default float-left>
       Previous
     </button>
-  </form>
-</ion-content>
+  </ion-item>
+</ion-footer>

@@ -8,10 +8,47 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page6">
-  <button ion-button color="secondary" (click)="goToNewApp()" block>New Application</button>
-  <button ion-button (click)="goToPayment()" block>Payment</button>
-  <button ion-button block>Edit Application</button>
-  <div class="spacer" style="height:350px;" id="login-spacer1"></div>
-  <button ion-button block name="logout" (click)="logout()">Logout</button>
+<ion-content id="page6">
+  <div class="slides">
+    <ion-slides pager>
+      <ion-slide>
+        <img class="slides" src="assets/imgs/passport-background.jpg" alt="test 1">
+      </ion-slide>
+      <ion-slide>
+        <div class="placeholder-img"></div>
+      </ion-slide>
+      <ion-slide>
+        <h1>test 3</h1>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-12 col-sm-12 col-md-4>
+        <ion-card (click)="newApplication()">
+          <img src="assets/imgs/passport-background.jpg" />
+          <ion-card-header text-center>
+            New Application
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-12 col-md-4>
+        <ion-card (click)="editForm()">
+          <img src="assets/imgs/passport-background.jpg" />
+          <ion-card-header text-center>
+            Edit Form
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-12 col-md-4>
+        <ion-card (click)="payment()">
+          <img src="assets/imgs/passport-background.jpg" />
+          <ion-card-header text-center>
+            Payment
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <!-- <button ion-button block name="logout" (click)="logout()">Logout</button> -->
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -132,8 +132,7 @@ export class DocumentsPage {
 
     modal.onDidDismiss(data => {
       console.log("Modal onDismiss");
-      documents[5] = data;
-      this.signature_selected = true;
+      this.signature_selected = data;
     })
   }
 

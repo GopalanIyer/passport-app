@@ -22,10 +22,12 @@ export class LoginPage {
 
     let toast = this.toatCtrl.create({
       message: "Invalid Username or Password",
-      duration: 3000
+      duration: 3000,
+      showCloseButton: true,
     });
 
     if(this.email == '' || this.password == '') {
+      console.log('empty');
       toast.present();
       return;
     }
@@ -44,12 +46,10 @@ export class LoginPage {
       .catch(err => {
         loading.dismiss();
         console.log(JSON.stringify(err));
+        if(err.code == 'auth/network-request-failed')
+          toast.setMessage('Network Error. Make sure you are connected to internet and try again')
         toast.present();
       })
       
-  }
-
-  click() {
-    this.navCtrl.push(MenuPage);
   }
 }
