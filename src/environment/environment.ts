@@ -82,8 +82,15 @@ export var documents = [
         contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     },
     {
-        name: 'Signature',
-        uploadName: 'signature.jpg',
+        name: 'Customer Signature',
+        uploadName: 'customer_signature.jpg',
+        data: '',
+        format: 'data_url',
+        contentType: 'image/jpeg',
+    },
+    {
+        name: 'Executive Signature',
+        uploadName: 'executive_signature.jpg',
         data: '',
         format: 'data_url',
         contentType: 'image/jpeg',

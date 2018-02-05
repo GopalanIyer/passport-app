@@ -8,9 +8,10 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page4">
-  <form id="other-form5">
-    <ion-item id="other-select2">
+
+<ion-content padding>
+  <ion-row>
+    <ion-item col-12 col-md-6>
       <ion-label>
         Action
       </ion-label>
@@ -22,7 +23,7 @@
         <ion-option>Damaged Passport</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item id="other-select3">
+    <ion-item col-12 col-md-6>
       <ion-label>
         Type
       </ion-label>
@@ -31,47 +32,60 @@
         <ion-option>Tatkaal</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item id="other-input25">
+  </ion-row>
+  <ion-row>
+    <ion-item>
       <ion-label floating>
         Old Passport Number
       </ion-label>
       <ion-input (ionChange)='onChange()' type="text" name="old_passport" [(ngModel)]="data.old_passport"></ion-input>
     </ion-item>
-    <ion-item id="other-input26">
+  </ion-row>
+  <ion-row>
+    <ion-item col-12 col-md-6>
       <ion-label floating>
         Police Station
       </ion-label>
       <ion-input (ionChange)='onChange()' type="text" name="police_station" [(ngModel)]="data.police_station"></ion-input>
     </ion-item>
-    <ion-item id="other-input27">
+    <ion-item col-12 col-md-6>
       <ion-label floating>
         Place of Appointment
       </ion-label>
       <ion-input (ionChange)='onChange()' type="text" name="appointment_place" [(ngModel)]="data.appointment_place"></ion-input>
     </ion-item>
-    <ion-item id="other-input36">
+  </ion-row>
+  <ion-row>
+    <ion-item>
       <ion-label floating>
         Form Number
       </ion-label>
       <ion-input (ionChange)='onChange()' type="number" name="form_no" [(ngModel)]="data.form_no"></ion-input>
     </ion-item>
-    <ion-item id="other-input37">
+  </ion-row>
+  <ion-row>
+    <ion-item col-12 col-md-6>
       <ion-label floating>
         Telecaller Name
       </ion-label>
       <ion-input (ionChange)='onChange()' type="text" name="telecaller_name" [(ngModel)]="data.telecaller_name"></ion-input>
     </ion-item>
-    <ion-item id="other-input38">
+    <ion-item col-12 col-md-6>
       <ion-label floating>
         Name of Executive
       </ion-label>
       <ion-input (ionChange)='onChange()' type="text" name="executive_name" [(ngModel)]="data.executive_name"></ion-input>
     </ion-item>
-    <button id="other-button14" ion-button color="positive" (click)="submit()" block>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-item no-lines>
+    <button ion-button color="positive" (click)="submit()" default float-right>
       Submit
     </button>
-    <button id="other-button15" ion-button color="stable" (click)="previous()" outline block>
+    <button ion-button color="stable" (click)="previous()" outline default float-left>
       Previous
     </button>
-  </form>
-</ion-content>
+  </ion-item>
+</ion-footer>

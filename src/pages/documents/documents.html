@@ -10,46 +10,57 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-row text-wrap>
-    <ion-label>
-      Aadhar Card:
-    </ion-label>
-    <ion-label *ngIf="aadhar_selected">Document Selected</ion-label>
-    <button ion-button (click)="openCamera('Aadhar Card')">Select</button>
-  </ion-row>
-  <ion-row text-wrap>
-    <ion-label>
-      PAN Card:
-    </ion-label>
-    <ion-label *ngIf="pan_selected">Document Selected</ion-label>
-    <button ion-button (click)="openCamera('Pan Card')">Select</button>
-  </ion-row>
-  <ion-row text-wrap>
-    <ion-label>
-      Bank Details:
-    </ion-label>
-    <ion-label *ngIf="bank_details_selected">Document Selected</ion-label>
-    <button ion-button (click)="openGallery('Bank Details')">Select</button>
-  </ion-row>
-  <ion-row text-wrap>
-    <ion-label>
-      Salary Slip:
-    </ion-label>
-    <ion-label *ngIf="salary_slip_selected">Document Selected</ion-label>
-    <button ion-button (click)="openFile('Salary Slip')">Select</button>
-  </ion-row>
-  <ion-row text-wrap>
-    <ion-label>
-      Education Qualification Details:
-    </ion-label>
-    <ion-label *ngIf="education_selected">Document Selected</ion-label>
-    <button ion-button (click)="openFile('Education Details')">Select</button>
-  </ion-row>
-  <ion-row text-wrap>
-    <ion-label>Signature</ion-label>
-    <ion-label *ngIf="signature_selected">Document Selected</ion-label>
-    <button ion-button (click)="openSignature()">Select</button>
-  </ion-row>
-  <button ion-button (click)="next()" block>Save and Next</button>
-  <button ion-button (click)="previous()" outline block>Previous</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center col-6 col-sm-6 col-md-4>
+        <button ion-fab (click)="openCamera('Aadhar Card')">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+        <p>Aadhar Card</p>
+        <p style="color: green" *ngIf="aadhar_selected">Document Selected</p>
+      </ion-col>
+      <ion-col text-center col-6 col-sm-6 col-md-4>
+        <button ion-fab (click)="openCamera('Pan Card')">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+        <p>PAN Card</p>
+        <p style="color: green" *ngIf="pan_selected">Document Selected</p>
+      </ion-col>
+      <ion-col text-center col-6 col-sm-6 col-md-4>
+        <button ion-fab (click)="openGallery('Bank Details')">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+        <p>Bank Details</p>
+        <p style="color: green" *ngIf="bank_details_selected">Document Selected</p>
+      </ion-col>
+      <ion-col text-center col-6 col-sm-6 col-md-4>
+        <button ion-fab (click)="openFile('Salary Slip')">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+        <p>Salary Slip</p>
+        <p style="color: green" *ngIf="salary_slip_selected">Document Selected</p>
+      </ion-col>
+      <ion-col text-center col-6 col-sm-6 col-md-4>
+        <button ion-fab (click)="openFile('Education Details')">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+        <p>Education Details</p>
+        <p style="color: green" *ngIf="education_selected">Document Selected</p>
+      </ion-col>
+      <ion-col text-center col-6 col-sm-6 col-md-4>
+        <button ion-fab (click)="openSignature()">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+        <p>Signature</p>
+        <p style="color: green" *ngIf="signature_selected">Document Selected</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-item no-lines>
+    <button ion-button (click)="next()" default float-right>Save and Next</button>
+    <button ion-button (click)="previous()" outline default float-left>Previous</button>
+  </ion-item>
+</ion-footer>

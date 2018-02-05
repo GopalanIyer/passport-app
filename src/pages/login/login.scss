@@ -1,3 +1,20 @@
 page-login {
-
+    .scroll-content {
+        background: url('../assets/imgs/passport-background.jpg');
+        background-size: cover;
+    }
+    ion-grid {
+        height: 100%;
+    }
+    ion-row {
+        height: 50%;
+    }
+    .box {
+        flex: 1; // background-color: blueviolet;
+        border-radius: 3px;
+    }
+    .login {
+        // background-color: red;
+        // width: 20%;
+    }
 }

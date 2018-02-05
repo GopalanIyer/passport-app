@@ -10,7 +10,7 @@ $font-path: "../assets/fonts";
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
-
+$fab-size: 120px;
 
 @import "ionic.globals";
 
@@ -40,6 +40,8 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
+
+$prime: #3f51b5;
 
 
 // App iOS Variables

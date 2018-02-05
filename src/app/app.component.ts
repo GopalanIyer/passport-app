@@ -5,8 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { HomePage } from '../pages/home/home';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { MenuPage } from '../pages/menu/menu';
 
 @Component({
   templateUrl: 'app.html'
@@ -51,11 +51,11 @@ export class MyApp {
       afAuth.auth.onAuthStateChanged(user => {
         if (user) {
           console.log("Login");
-          this.navCtrl.setRoot(HomePage);
+          app.getRootNavs()[0].push(MenuPage);
         }
         else {
           console.log("Logout");
-          this.navCtrl.setRoot(LoginPage);
+          app.getRootNavs()[0].push(LoginPage);
         }
       })
     });

@@ -7,7 +7,31 @@
 </ion-header>
 
 <ion-content padding>
-    <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
-    <button ion-button (click)="clearPad()">Clear</button>
-    <button ion-button (click)="savePad()">Save</button>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        Customer Sign
+        <button ion-button (click)="clearPad1()" float-right>Clear</button>
+        <br>
+        <br>
+        <signature-pad #SignaturePad1 [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        Executive Sign
+        <button ion-button (click)="clearPad2()" float-right>Clear</button>
+        <br>
+        <br>
+        <signature-pad #SignaturePad2 [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 </ion-content>
+
+<ion-footer>
+  <ion-item>
+    <button ion-button default float-left outline (click)="cancel()">Cancel</button>
+    <button ion-button default float-right (click)="savePad()">Save</button>
+  </ion-item>
+</ion-footer>
